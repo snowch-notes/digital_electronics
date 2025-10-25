@@ -8,11 +8,11 @@ This tutorial will guide you through building the simple D latch from Figure 3.1
 ## What You'll Need
 
 ### Components
-- **2× N-channel MOSFETs** (2N7000 or BS170)
-- **2× P-channel MOSFETs** (BS250 or similar)
-- **2× Push buttons** (momentary, normally open)
-- **2× Pull-down resistors** (10kΩ)
-- **1× Pull-up resistor** (10kΩ, optional for output observation)
+- **1× N-channel MOSFET** (2N7000 or BS170)
+- **1× P-channel MOSFET** (BS250 or similar)
+- **3× Push buttons** (momentary, normally open) - for D, CLK, and CLK̄
+- **3× Pull-down resistors** (10kΩ) - one for each button input
+- **1× Pull-down resistor** (10kΩ, optional for Q output observation)
 - **1× LED** (any color)
 - **1× Current limiting resistor** (220Ω - 1kΩ)
 - **Power supply** (5V or use USB power/batteries)
@@ -42,7 +42,7 @@ A transmission gate uses both NMOS and PMOS in parallel:
 
 See the detailed SVG circuit diagram below showing all connections with proper MOSFET pinouts:
 
-![Compact DLatch](./compact_dlatch.svg)
+![D Latch Circuit Diagram](./compact_dlatch.svg)
 
 **Pin Connections Summary:**
 - **D Input**: Button to +5V, 10kΩ pull-down to GND
@@ -75,29 +75,32 @@ The diagram shows all three pins (G, D, S) for each MOSFET clearly labeled.
 4. **Result**: Pressing button → CLK = 1, releasing → CLK = 0
 
 ### Step 4: Create CLK̄ (Inverted Clock)
-For this simple demo, **manually control CLK̄**:
-- When CLK button is pressed: Connect CLK̄ to GND (0)
-- When CLK button is released: Connect CLK̄ to +5V (1)
+For this simple demo, use a **third button for CLK̄**:
+- Press CLK̄ button → CLK̄ = 1
+- Release CLK̄ button → CLK̄ = 0
+- **Important**: Press CLK and CLK̄ alternately - when one is pressed, the other should be released
 
-*Alternative: Use a NOT gate (like 74HC04) or a simple NMOS inverter*
+*Alternative: Use a NOT gate (like 74HC04) or build a simple NMOS inverter with a pull-up resistor*
 
 ### Step 5: Build the Transmission Gate
 1. Place NMOS (T1) and PMOS (T2) side by side
-2. Connect the **Sources/Drains**:
-   - Connect D input to one end of both transistors (in parallel)
-   - Connect Q output node to the other end of both transistors
+2. Connect the **Drains and Sources in parallel**:
+   - Connect D input to the drain (or source) end of both transistors
+   - Connect Q output node to the source (or drain) end of both transistors
+   - *Note: In transmission gates, drain/source are interchangeable due to bidirectional operation*
 3. Connect the **Gates**:
    - NMOS gate to CLK
    - PMOS gate to CLK̄
 
 ### Step 6: Add Output Indicator
-1. Connect LED cathode (short leg) to Q node
-2. Connect LED anode (long leg) through 220Ω resistor to +5V
-3. *Note: LED will light when Q is LOW (sinking current)*
+**Recommended (High-Active - easier to observe):**
+1. Connect LED anode (long leg) to Q node
+2. Connect LED cathode (short leg) through 220Ω resistor to GND
+3. LED lights when Q = 1 (HIGH)
 
-Alternatively, for active-high indication:
-- Connect LED anode to Q
-- Connect LED cathode through resistor to GND
+**Alternative (Low-Active):**
+- Connect LED cathode to Q, anode through resistor to +5V
+- LED lights when Q = 0 (LOW, sinking current)
 
 ### Step 7: Optional Pull-down on Q
 Add a 10kΩ resistor from Q to GND to help observe floating behavior
@@ -143,12 +146,12 @@ Add a 10kΩ resistor from Q to GND to help observe floating behavior
    - You might see Q get disturbed
 4. **The transmission gate is bidirectional** - current can flow both ways
 
-**Experiment D - Threshold Voltage Issues**
-1. Load Q = 1 (press D, press CLK, release CLK)
-2. Measure voltage at Q with multimeter
-3. You may find Q is slightly below VDD (like 4.3V instead of 5V)
-4. This is because NMOS can't pass a full HIGH (loses Vth)
-5. PMOS helps but the gate isn't perfect
+**Experiment D - On-Resistance Effects**
+1. Load Q = 1, enter opaque mode
+2. Connect a 1kΩ load resistor from Q to GND
+3. Measure Q voltage - you may see a slight drop (to ~4.7-4.9V) due to MOSFET on-resistance (~10-100Ω)
+4. This is not a threshold voltage issue (the parallel NMOS-PMOS eliminates Vth drops)
+5. **A proper latch would drive Q strongly through low-impedance buffers**
 
 **Experiment E - External Load Effect**
 1. Load Q = 1, enter opaque mode
