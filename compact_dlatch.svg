@@ -1,0 +1,185 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">
+    Compact D Latch with Transmission Gate
+  </text>
+  
+  <!-- Power Rail -->
+  <line x1="100" y1="60" x2="700" y2="60" stroke="#c00" stroke-width="3"/>
+  <text x="50" y="65" font-size="16" font-weight="bold" fill="#c00">+5V</text>
+  
+  <!-- Ground Rail -->
+  <line x1="100" y1="550" x2="700" y2="550" stroke="#333" stroke-width="3"/>
+  <text x="50" y="555" font-size="16" font-weight="bold" fill="#333">GND</text>
+  
+  <!-- D Input Section -->
+  <g id="d-input">
+    <!-- Button D -->
+    <rect x="140" y="60" width="40" height="60" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="160" y="95" text-anchor="middle" font-size="12" fill="#333">BTN</text>
+    <text x="160" y="108" text-anchor="middle" font-size="12" fill="#333">D</text>
+    <line x1="160" y1="120" x2="160" y2="160" stroke="#333" stroke-width="2"/>
+    
+    <!-- Node D -->
+    <circle cx="160" cy="160" r="4" fill="#333"/>
+    <text x="160" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#00c">D</text>
+    
+    <!-- Pull-down resistor -->
+    <line x1="160" y1="160" x2="160" y2="200" stroke="#333" stroke-width="2"/>
+    <rect x="150" y="200" width="20" height="60" fill="none" stroke="#333" stroke-width="2"/>
+    <text x="160" y="235" text-anchor="middle" font-size="10" fill="#333">10k</text>
+    <line x1="160" y1="260" x2="160" y2="280" stroke="#333" stroke-width="2"/>
+    <line x1="160" y1="280" x2="160" y2="550" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+  
+  <!-- CLK Input Section -->
+  <g id="clk-input">
+    <!-- Button CLK -->
+    <rect x="340" y="60" width="40" height="60" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="360" y="95" text-anchor="middle" font-size="12" fill="#333">BTN</text>
+    <text x="360" y="108" text-anchor="middle" font-size="12" fill="#333">CLK</text>
+    <line x1="360" y1="120" x2="360" y2="160" stroke="#333" stroke-width="2"/>
+    
+    <!-- Node CLK -->
+    <circle cx="360" cy="160" r="4" fill="#333"/>
+    <text x="360" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#0a0">CLK</text>
+    
+    <!-- Pull-down resistor -->
+    <line x1="360" y1="160" x2="360" y2="200" stroke="#333" stroke-width="2"/>
+    <rect x="350" y="200" width="20" height="60" fill="none" stroke="#333" stroke-width="2"/>
+    <text x="360" y="235" text-anchor="middle" font-size="10" fill="#333">10k</text>
+    <line x1="360" y1="260" x2="360" y2="280" stroke="#333" stroke-width="2"/>
+    <line x1="360" y1="280" x2="360" y2="550" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+  
+  <!-- CLK̄ Input Section -->
+  <g id="clkbar-input">
+    <!-- Button CLK̄ -->
+    <rect x="540" y="60" width="40" height="60" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="560" y="95" text-anchor="middle" font-size="12" fill="#333">BTN</text>
+    <text x="560" y="108" text-anchor="middle" font-size="11" fill="#333">CLK̄</text>
+    <line x1="560" y1="120" x2="560" y2="160" stroke="#333" stroke-width="2"/>
+    
+    <!-- Node CLK̄ -->
+    <circle cx="560" cy="160" r="4" fill="#333"/>
+    <text x="560" y="145" text-anchor="middle" font-size="16" font-weight="bold" fill="#0a0">CLK̄</text>
+    
+    <!-- Pull-down resistor -->
+    <line x1="560" y1="160" x2="560" y2="200" stroke="#333" stroke-width="2"/>
+    <rect x="550" y="200" width="20" height="60" fill="none" stroke="#333" stroke-width="2"/>
+    <text x="560" y="235" text-anchor="middle" font-size="10" fill="#333">10k</text>
+    <line x1="560" y1="260" x2="560" y2="280" stroke="#333" stroke-width="2"/>
+    <line x1="560" y1="280" x2="560" y2="550" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+  
+  <!-- Connection from D to transmission gate -->
+  <line x1="160" y1="160" x2="260" y2="160" stroke="#00c" stroke-width="2"/>
+  <line x1="260" y1="160" x2="260" y2="280" stroke="#00c" stroke-width="2"/>
+  
+  <!-- Transmission Gate -->
+  <g id="transmission-gate">
+    <!-- NMOS (2N7000) -->
+    <g id="nmos">
+      <!-- Drain (top) -->
+      <line x1="260" y1="280" x2="290" y2="280" stroke="#00c" stroke-width="2"/>
+      <circle cx="260" cy="280" r="3" fill="#00c"/>
+      <text x="240" y="285" text-anchor="end" font-size="10" fill="#666">D</text>
+      
+      <!-- Body/Channel -->
+      <line x1="290" y1="270" x2="290" y2="310" stroke="#333" stroke-width="3"/>
+      
+      <!-- Source (bottom) -->
+      <line x1="290" y1="310" x2="320" y2="310" stroke="#c00" stroke-width="2"/>
+      <circle cx="320" cy="310" r="3" fill="#c00"/>
+      <text x="340" y="315" text-anchor="start" font-size="10" fill="#666">S</text>
+      
+      <!-- Gate (left side) -->
+      <line x1="280" y1="270" x2="280" y2="310" stroke="#333" stroke-width="2"/>
+      <line x1="280" y1="290" x2="360" y2="290" stroke="#0a0" stroke-width="2"/>
+      <circle cx="280" cy="290" r="3" fill="#0a0"/>
+      <text x="270" y="295" text-anchor="end" font-size="10" fill="#666">G</text>
+      
+      <!-- Label -->
+      <text x="290" y="335" text-anchor="middle" font-size="12" fill="#333">NMOS</text>
+      <text x="290" y="348" text-anchor="middle" font-size="10" fill="#666">2N7000</text>
+    </g>
+    
+    <!-- PMOS (BS250) -->
+    <g id="pmos">
+      <!-- Drain (top) -->
+      <line x1="420" y1="280" x2="450" y2="280" stroke="#00c" stroke-width="2"/>
+      <circle cx="450" cy="280" r="3" fill="#00c"/>
+      <text x="470" y="285" text-anchor="start" font-size="10" fill="#666">D</text>
+      
+      <!-- Body/Channel -->
+      <line x1="450" y1="270" x2="450" y2="310" stroke="#333" stroke-width="3"/>
+      
+      <!-- Source (bottom) -->
+      <line x1="420" y1="310" x2="450" y2="310" stroke="#c00" stroke-width="2"/>
+      <circle cx="420" cy="310" r="3" fill="#c00"/>
+      <text x="400" y="315" text-anchor="end" font-size="10" fill="#666">S</text>
+      
+      <!-- Gate (right side with bubble for P-channel) -->
+      <line x1="460" y1="270" x2="460" y2="310" stroke="#333" stroke-width="2"/>
+      <circle cx="465" cy="290" r="5" fill="none" stroke="#333" stroke-width="2"/>
+      <line x1="470" y1="290" x2="560" y2="290" stroke="#0a0" stroke-width="2"/>
+      <circle cx="470" cy="290" r="3" fill="#0a0"/>
+      <text x="480" y="295" text-anchor="start" font-size="10" fill="#666">G</text>
+      
+      <!-- Label -->
+      <text x="450" y="335" text-anchor="middle" font-size="12" fill="#333">PMOS</text>
+      <text x="450" y="348" text-anchor="middle" font-size="10" fill="#666">BS250</text>
+    </g>
+    
+    <!-- Connect Sources and Drains together -->
+    <line x1="320" y1="310" x2="420" y2="310" stroke="#c00" stroke-width="2"/>
+    <line x1="260" y1="280" x2="420" y2="280" stroke="#00c" stroke-width="2"/>
+  </g>
+  
+  <!-- Connection to Q -->
+  <line x1="420" y1="310" x2="550" y2="310" stroke="#c00" stroke-width="2"/>
+  <circle cx="550" cy="310" r="4" fill="#c00"/>
+  <text x="550" y="295" text-anchor="middle" font-size="16" font-weight="bold" fill="#c00">Q</text>
+  
+  <!-- Optional pull-down on Q -->
+  <line x1="550" y1="310" x2="550" y2="350" stroke="#333" stroke-width="2"/>
+  <rect x="540" y="350" width="20" height="60" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="550" y="385" text-anchor="middle" font-size="10" fill="#333">10k</text>
+  <text x="595" y="385" text-anchor="start" font-size="10" fill="#666">(optional)</text>
+  <line x1="550" y1="410" x2="550" y2="430" stroke="#333" stroke-width="2"/>
+  <line x1="550" y1="430" x2="550" y2="550" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <!-- LED Circuit -->
+  <g id="led-circuit">
+    <line x1="550" y1="310" x2="650" y2="310" stroke="#c00" stroke-width="2"/>
+    
+    <!-- LED -->
+    <g transform="translate(650, 310)">
+      <path d="M 0,-15 L 15,0 L 0,15 Z" fill="none" stroke="#f00" stroke-width="2"/>
+      <line x1="-15" y1="-15" x2="-15" y2="15" stroke="#f00" stroke-width="2"/>
+      <line x1="-15" y1="0" x2="0" y2="0" stroke="#f00" stroke-width="2"/>
+      <line x1="15" y1="0" x2="30" y2="0" stroke="#f00" stroke-width="2"/>
+      <text x="0" y="35" text-anchor="middle" font-size="12" fill="#f00">LED</text>
+    </g>
+    
+    <!-- Current limiting resistor -->
+    <line x1="680" y1="310" x2="680" y2="350" stroke="#333" stroke-width="2"/>
+    <rect x="670" y="350" width="20" height="60" fill="none" stroke="#333" stroke-width="2"/>
+    <text x="680" y="385" text-anchor="middle" font-size="10" fill="#333">220Ω</text>
+    <line x1="680" y1="410" x2="680" y2="430" stroke="#333" stroke-width="2"/>
+    <line x1="680" y1="430" x2="680" y2="550" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
+  </g>
+  
+  <!-- Labels and annotations -->
+  <text x="400" y="580" text-anchor="middle" font-size="14" fill="#666" font-style="italic">
+    Press CLK and CLK̄ alternately (one high, one low)
+  </text>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(20, 420)">
+    <text x="0" y="0" font-size="14" font-weight="bold" fill="#333">Operation:</text>
+    <text x="0" y="20" font-size="12" fill="#333">CLK=1, CLK̄=0 → Transparent (D flows to Q)</text>
+    <text x="0" y="40" font-size="12" fill="#333">CLK=0, CLK̄=1 → Opaque (Q holds value)</text>
+    <text x="0" y="65" font-size="11" font-weight="bold" fill="#666">Pin Labels: G=Gate, D=Drain, S=Source</text>
+  </g>
+</svg>
