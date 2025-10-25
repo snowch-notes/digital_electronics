@@ -149,17 +149,26 @@
   <line x1="550" y1="410" x2="550" y2="430" stroke="#333" stroke-width="2"/>
   <line x1="550" y1="430" x2="550" y2="550" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
   
-  <!-- LED Circuit -->
+  <!-- LED Circuit (High-Active Configuration) -->
   <g id="led-circuit">
     <line x1="550" y1="310" x2="650" y2="310" stroke="#c00" stroke-width="2"/>
     
-    <!-- LED -->
+    <!-- LED - Corrected orientation: anode on left (Q), cathode on right -->
     <g transform="translate(650, 310)">
-      <path d="M 0,-15 L 15,0 L 0,15 Z" fill="none" stroke="#f00" stroke-width="2"/>
-      <line x1="-15" y1="-15" x2="-15" y2="15" stroke="#f00" stroke-width="2"/>
-      <line x1="-15" y1="0" x2="0" y2="0" stroke="#f00" stroke-width="2"/>
+      <!-- Cathode bar (right side) -->
+      <line x1="15" y1="-15" x2="15" y2="15" stroke="#f00" stroke-width="2"/>
+      <!-- Triangle pointing right (current flow direction) -->
+      <path d="M -15,0 L 0,-15 L 0,15 Z" fill="none" stroke="#f00" stroke-width="2"/>
+      <!-- Anode connection (left, from Q) -->
+      <line x1="-30" y1="0" x2="-15" y2="0" stroke="#f00" stroke-width="2"/>
+      <!-- Cathode connection (right) -->
       <line x1="15" y1="0" x2="30" y2="0" stroke="#f00" stroke-width="2"/>
+      <!-- Light rays -->
+      <path d="M 8,-20 L 12,-25 M 12,-18 L 16,-23" stroke="#f90" stroke-width="1.5" fill="none"/>
+      <path d="M 8,20 L 12,25 M 12,18 L 16,23" stroke="#f90" stroke-width="1.5" fill="none"/>
       <text x="0" y="35" text-anchor="middle" font-size="12" fill="#f00">LED</text>
+      <text x="-22" y="-5" text-anchor="middle" font-size="9" fill="#666">+</text>
+      <text x="22" y="-5" text-anchor="middle" font-size="9" fill="#666">−</text>
     </g>
     
     <!-- Current limiting resistor -->
@@ -172,7 +181,7 @@
   
   <!-- Labels and annotations -->
   <text x="400" y="580" text-anchor="middle" font-size="14" fill="#666" font-style="italic">
-    Press CLK and CLK̄ alternately (one high, one low)
+    Press CLK and CLK̄ alternately (one high, one low) - NEVER both high simultaneously!
   </text>
   
   <!-- Legend -->
@@ -181,5 +190,6 @@
     <text x="0" y="20" font-size="12" fill="#333">CLK=1, CLK̄=0 → Transparent (D flows to Q)</text>
     <text x="0" y="40" font-size="12" fill="#333">CLK=0, CLK̄=1 → Opaque (Q holds value)</text>
     <text x="0" y="65" font-size="11" font-weight="bold" fill="#666">Pin Labels: G=Gate, D=Drain, S=Source</text>
+    <text x="0" y="82" font-size="10" fill="#666">Note: D/S are interchangeable in transmission gates</text>
   </g>
 </svg>
